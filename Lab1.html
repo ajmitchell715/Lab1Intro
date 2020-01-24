@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Andrew Mitchell" />
+
+<meta name="date" content="2020-01-23" />
+
+<title>Lab1</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Lab1</h1>
+<h4 class="author">Andrew Mitchell</h4>
+<h4 class="date">2020-01-23</h4>
+
+
+<div id="TOC">
+<ul>
+<li><a href="#links-to-relevant-material">Links to Relevant Material</a></li>
+<li><a href="#formulae">Formulae</a><ul>
+<li><a href="#formula-1-1-the-mean-of-a-variable-k">Formula 1-1: The mean of a variable k</a></li>
+<li><a href="#formula-1-4-the-covariance-of-two-variables-i-and-k">Formula 1-4: The covariance of two variables i and k</a></li>
+<li><a href="#formula-1-5-the-correlation-coefficient-of-two-variables-i-and-k">Formula 1-5: The correlation coefficient of two variables i and k</a></li>
+<li><a href="#formulas-3-27-the-mean-and-covariance-matrices-in-terms-of-the-data-set">Formulas 3-27: The mean and covariance matrices in terms of the data set</a></li>
+<li><a href="#formula-3-28-the-sample-standard-deviation-matrix">Formula 3-28: The sample standard deviation matrix</a></li>
+<li><a href="#formula-3-29-the-correlation-coefficient-matrix-in-terms-of-the-sample-standard-deviation-matrix-and-covariance-matrix">Formula 3-29: The correlation coefficient matrix in terms of the sample standard deviation matrix and covariance matrix</a></li>
+</ul></li>
+<li><a href="#functions-calculating-the-mean-vector-and-covariance-and-correlation-matrices">Functions Calculating the Mean Vector and Covariance and Correlation Matrices</a><ul>
+<li><a href="#creating-the-data-set">Creating the Data Set</a></li>
+<li><a href="#creating-the-mean-vector">Creating the Mean Vector</a></li>
+<li><a href="#creating-the-covariance-matrix">Creating the Covariance Matrix</a></li>
+<li><a href="#creating-the-correlation-coefficient-matrix">Creating the Correlation Coefficient Matrix</a></li>
+</ul></li>
+<li><a href="#assessment-for-students-in-math-4793">Assessment for Students in MATH 4793</a></li>
+</ul>
+</div>
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(Lab1Intro)</a></code></pre></div>
+<div id="links-to-relevant-material" class="section level1">
+<h1>Links to Relevant Material</h1>
+<p><GitHub Repository><a href="https://github.com/ajmitchell715/Lab1Intro">Andrew Mitchell GitHub Repository</a></p>
+<p><R Packages Tutorial><a href="http://r-pkgs.had.co.nz/intro.html">R Packages Tutorial</a></p>
+</div>
+<div id="formulae" class="section level1">
+<h1>Formulae</h1>
+<p>The first three of these formulae will be used to create:</p>
+<ul>
+<li><p>A mean vector for the variables in the data set</p></li>
+<li><p>A covariance matrix for the variables</p></li>
+<li><p>A correlation coefficient matrix for the variables</p></li>
+</ul>
+<p>The other formulae listed describe relationships between the matrices but are not used for the purposes of creating the vector and matrices.</p>
+<div id="formula-1-1-the-mean-of-a-variable-k" class="section level2">
+<h2>Formula 1-1: The mean of a variable k</h2>
+<p><span class="math inline">\(\bar{x_k}=\dfrac{1}{n}\Sigma_{j=1}^{n}x_{jk}\)</span> for <span class="math inline">\(k=1,2,...,p\)</span></p>
+</div>
+<div id="formula-1-4-the-covariance-of-two-variables-i-and-k" class="section level2">
+<h2>Formula 1-4: The covariance of two variables i and k</h2>
+<p><span class="math inline">\(s_{ik}=\dfrac{1}{n}\Sigma_{j=1}^n(x_{ji}-\bar{x_i})(x_{jk}-\bar{x_k})\)</span></p>
+</div>
+<div id="formula-1-5-the-correlation-coefficient-of-two-variables-i-and-k" class="section level2">
+<h2>Formula 1-5: The correlation coefficient of two variables i and k</h2>
+<p><span class="math display">\[
+\begin{eqnarray}
+r_{ik} &amp;=&amp; \dfrac{s_{ik}}{\sqrt{s_{ii}}\sqrt{s_{kk}}}\\
+&amp;=&amp; \dfrac{\Sigma_{j=1}^n(x_{ji}-\bar{x_i})(x_{jk}-\bar{x_k})}{\sqrt{\Sigma_{j=1}^n(x_{ji}-\bar{x_i})^2}\sqrt{\Sigma_{j=1}^n(x_{jk}-\bar{x_k})^2}}
+\end{eqnarray}
+\]</span></p>
+</div>
+<div id="formulas-3-27-the-mean-and-covariance-matrices-in-terms-of-the-data-set" class="section level2">
+<h2>Formulas 3-27: The mean and covariance matrices in terms of the data set</h2>
+<p><span class="math inline">\(\bar{\textbf{x}}=\dfrac{1}{n}\textbf{X}&#39;1\)</span></p>
+<p><span class="math inline">\(\textbf{S}=\dfrac{1}{n-1}\textbf{X}&#39;(\textbf{I}-\dfrac{1}{n}\textbf{11}&#39;)\textbf{X}\)</span></p>
+</div>
+<div id="formula-3-28-the-sample-standard-deviation-matrix" class="section level2">
+<h2>Formula 3-28: The sample standard deviation matrix</h2>
+<p><span class="math display">\[
+\textbf{D}^{\dfrac{1}{2}}=\begin{bmatrix}
+\sqrt{s_{11}} &amp; 0 &amp; \cdots &amp; 0\\
+0 &amp; \sqrt{s_{22}} &amp; \cdots &amp; 0\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+0 &amp; 0 &amp; \cdots &amp; \sqrt{s_{pp}}
+\end{bmatrix}
+\]</span></p>
+</div>
+<div id="formula-3-29-the-correlation-coefficient-matrix-in-terms-of-the-sample-standard-deviation-matrix-and-covariance-matrix" class="section level2">
+<h2>Formula 3-29: The correlation coefficient matrix in terms of the sample standard deviation matrix and covariance matrix</h2>
+<p><span class="math inline">\(\textbf{R}=\textbf{D}^{\dfrac{-1}{2}}\textbf{SD}^{\dfrac{-1}{2}}\)</span></p>
+</div>
+</div>
+<div id="functions-calculating-the-mean-vector-and-covariance-and-correlation-matrices" class="section level1">
+<h1>Functions Calculating the Mean Vector and Covariance and Correlation Matrices</h1>
+<div id="creating-the-data-set" class="section level2">
+<h2>Creating the Data Set</h2>
+<p>The data used for this laboratory describe 41 machines’ density and strength, with the latter two variables in the data set combining to describe strength.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">machine=<span class="kw">read.table</span>(<span class="st">&quot;T1-2.DAT&quot;</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">colnames</span>(machine)=<span class="kw">c</span>(<span class="st">&quot;Density&quot;</span>,<span class="st">&quot;Machine Direction&quot;</span>,<span class="st">&quot;Cross Direction&quot;</span>)</a></code></pre></div>
+</div>
+<div id="creating-the-mean-vector" class="section level2">
+<h2>Creating the Mean Vector</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">meanVec</span>(machine)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt;      length                         </span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt;   0.8118537 120.9534146  67.7231707</span></a></code></pre></div>
+</div>
+<div id="creating-the-covariance-matrix" class="section level2">
+<h2>Creating the Covariance Matrix</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">covMat</span>(machine)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt;             [,1]       [,2]       [,3]</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; [1,] 0.001233735  0.1643383  0.2197541</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt; [2,] 0.164338305 57.8742908 59.5049087</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; [3,] 0.219754123 59.5049087 93.5186997</span></a></code></pre></div>
+</div>
+<div id="creating-the-correlation-coefficient-matrix" class="section level2">
+<h2>Creating the Correlation Coefficient Matrix</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">corMat</span>(machine)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">#&gt;           [,1]      [,2]      [,3]</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; [1,] 1.0000000 0.6150141 0.6469592</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; [2,] 0.6150141 1.0000000 0.8088365</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; [3,] 0.6469592 0.8088365 1.0000000</span></a></code></pre></div>
+</div>
+</div>
+<div id="assessment-for-students-in-math-4793" class="section level1">
+<h1>Assessment for Students in MATH 4793</h1>
+<p>Clicker Quizzes: 10%</p>
+<p>4 Assignments: 20%</p>
+<p>Laboratories: 10%</p>
+<p>2 Exams: 10% each</p>
+<p>2 Projects: 10%</p>
+<p>Final Exam: 30%</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

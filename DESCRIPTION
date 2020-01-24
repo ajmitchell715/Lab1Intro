@@ -1,0 +1,15 @@
+Package: Lab1Intro
+Type: Package
+Title: Package Covers Material in Lab 1 for MATH 4793
+Version: 0.1.0
+Author: Andrew Mitchell
+Maintainer: Andrew Mitchell <andrew.j.mitchell-1@ou.edu>
+Description: Functions in this package cover the material in Lab 1 - making a mean vector and covariance and correlation matrices
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.0.2

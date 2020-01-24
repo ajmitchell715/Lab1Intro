@@ -1,0 +1,122 @@
+---
+title: "Lab1"
+author: "Andrew Mitchell"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: yes
+vignette: >
+  %\VignetteIndexEntry{Lab1}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Lab1Intro)
+```
+
+# Links to Relevant Material
+
+<GitHub Repository>[Andrew Mitchell GitHub Repository](https://github.com/ajmitchell715/Lab1Intro)
+
+<R Packages Tutorial>[R Packages Tutorial](http://r-pkgs.had.co.nz/intro.html)
+
+# Formulae
+
+The first three of these formulae will be used to create:
+
+* A mean vector for the variables in the data set
+
+* A covariance matrix for the variables
+
+* A correlation coefficient matrix for the variables
+
+The other formulae listed describe relationships between the matrices but are not used for the purposes of creating the vector and matrices.
+
+##  Formula 1-1: The mean of a variable k
+
+$\bar{x_k}=\dfrac{1}{n}\Sigma_{j=1}^{n}x_{jk}$ for $k=1,2,...,p$
+
+## Formula 1-4: The covariance of two variables i and k
+
+$s_{ik}=\dfrac{1}{n}\Sigma_{j=1}^n(x_{ji}-\bar{x_i})(x_{jk}-\bar{x_k})$
+
+## Formula 1-5: The correlation coefficient of two variables i and k
+
+$$
+\begin{eqnarray}
+r_{ik} &=& \dfrac{s_{ik}}{\sqrt{s_{ii}}\sqrt{s_{kk}}}\\
+&=& \dfrac{\Sigma_{j=1}^n(x_{ji}-\bar{x_i})(x_{jk}-\bar{x_k})}{\sqrt{\Sigma_{j=1}^n(x_{ji}-\bar{x_i})^2}\sqrt{\Sigma_{j=1}^n(x_{jk}-\bar{x_k})^2}}
+\end{eqnarray}
+$$
+
+## Formulas 3-27: The mean and covariance matrices in terms of the data set
+
+$\bar{\textbf{x}}=\dfrac{1}{n}\textbf{X}'1$
+
+$\textbf{S}=\dfrac{1}{n-1}\textbf{X}'(\textbf{I}-\dfrac{1}{n}\textbf{11}')\textbf{X}$
+
+## Formula 3-28: The sample standard deviation matrix
+
+$$
+\textbf{D}^{\dfrac{1}{2}}=\begin{bmatrix}
+\sqrt{s_{11}} & 0 & \cdots & 0\\
+0 & \sqrt{s_{22}} & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \sqrt{s_{pp}}
+\end{bmatrix}
+$$
+
+## Formula 3-29: The correlation coefficient matrix in terms of the sample standard deviation matrix and covariance matrix
+
+$\textbf{R}=\textbf{D}^{\dfrac{-1}{2}}\textbf{SD}^{\dfrac{-1}{2}}$
+
+# Functions Calculating the Mean Vector and Covariance and Correlation Matrices
+
+## Creating the Data Set
+
+The data used for this laboratory describe 41 machines' density and strength, with the latter two variables in the data set combining to describe strength.
+
+```{r}
+machine=read.table("T1-2.DAT")
+colnames(machine)=c("Density","Machine Direction","Cross Direction")
+```
+
+## Creating the Mean Vector
+
+```{r}
+meanVec(machine)
+```
+
+## Creating the Covariance Matrix
+
+```{r}
+covMat(machine)
+```
+
+## Creating the Correlation Coefficient Matrix
+
+```{r}
+corMat(machine)
+```
+
+# Assessment for Students in MATH 4793
+
+Clicker Quizzes: 10%
+
+4 Assignments: 20%
+
+Laboratories: 10%
+
+2 Exams: 10% each
+
+2 Projects: 10%
+
+Final Exam: 30%
